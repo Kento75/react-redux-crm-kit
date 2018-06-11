@@ -3,7 +3,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-  entry: [path.join(__dirname, 'src/index.js')],
+  entry: [path.join(__dirname, 'src/index.jsx')],
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
