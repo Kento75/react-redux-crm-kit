@@ -48,10 +48,16 @@ const defaultState = {
   searchWord: '',
   // 検索結果
   searchList: [],
+  // 処理結果ダイアログタイトル
+  resultDialogTitle: '',
+  // 処理結果内容
+  resultDialogMessage: '',
+  // 処理結果表示フラグ
+  isResultDialogOpen: false,
   // ロードダイアログ表示フラグ
   isLoadingDialogOpen: false,
   // プログレスバーの色
-  progressColor: '#FF9800',
+  progressColor: 'secondary',
 };
 
 const searchPageReducer = (state = defaultState, action) => {
@@ -74,6 +80,9 @@ const searchPageReducer = (state = defaultState, action) => {
       return {
         ...state,
         isLoadingDialogOpen: false,
+        resultDialogTitle: action.title,
+        resultDialogMessage: action.message,
+        isResultDialogOpen: true,
       };
     // 検索実行時
     case types.REQUEST_PROCESS:
@@ -83,7 +92,12 @@ const searchPageReducer = (state = defaultState, action) => {
       };
     // アラートメッセージ変更処理
     case types.CHANGE_ALERT_MESSAGE:
-      return {};
+      return {
+        ...state,
+        resultDialogTitle: '',
+        resultDialogMessage: '',
+        isResultDialogOpen: false,
+      };
     default:
       return state;
   }

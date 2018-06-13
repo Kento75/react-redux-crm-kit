@@ -7,8 +7,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 
-const ResultDialog = ({ isResultOpen, onCloseDialog, resultDialogTitle, resultDialogMessage }) => (
-  <Dialog open={isResultOpen} fullWidth maxWidth={'md'}>
+const ResultDialog = ({ isResultDialogOpen, onCloseDialog, resultDialogTitle, resultDialogMessage }) => (
+  <Dialog open={isResultDialogOpen} fullWidth maxWidth={'md'}>
     <DialogContent>
       <DialogTitle> {resultDialogTitle} </DialogTitle>
       <DialogContentText> {resultDialogMessage} </DialogContentText>

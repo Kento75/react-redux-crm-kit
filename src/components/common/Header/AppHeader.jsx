@@ -39,19 +39,13 @@ class AppHeader extends React.Component {
                 </Typography>
                 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose}>
                   <MenuItem>
-                    <Link to="/" style={{ textDecorationLine: 'none' }}>
-                      TOP
-                    </Link>
+                    <Link to="/" style={{textDecorationLine: 'none'}}>TOP</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to="/hello" style={{ textDecorationLine: 'none' }}>
-                      HelloWorld
-                    </Link>
+                    <Link to="/hello" style={{textDecorationLine: 'none'}}>HelloWorld</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to="/search" style={{ textDecorationLine: 'none' }}>
-                      検索画面
-                    </Link>
+                    <Link to="/search" style={{textDecorationLine: 'none'}}>検索画面</Link>
                   </MenuItem>
                 </Menu>
               </Toolbar>

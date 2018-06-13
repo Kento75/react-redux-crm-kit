@@ -7,7 +7,7 @@ import DripTable from 'mui-drip-table';
 import { AppHeader, TextBox, LoadingDialog, ResultDialog } from '../../components';
 
 /** Actions */
-import * as searchPageAction from '../../actions';
+import * as searchPageAction from '../../actions/SearchPage/searchPageAction';
 
 class SearchPageContainer extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class SearchPageContainer extends Component {
     /** ActionBinds */
     this.handleChangeSearchWord = this.handleChangeSearchWord.bind(this);
     this.handleEnterSearchEdit = this.handleEnterSearchEdit.bind(this);
+    this.handleOnClickOkBtn = this.handleOnClickOkBtn.bind(this);
   }
 
   /**
@@ -40,24 +41,32 @@ class SearchPageContainer extends Component {
     }
   }
 
+  /**
+   * 処理結果ダイアログ内OKボタン押下時
+   */
+  handleOnClickOkBtn() {
+    const { searchActionBind } = this.props;
+    searchActionBind.changeAlertMessage();
+  }
+
   render() {
     const {
-      tableTitle, // 【テーブル】タイトル
-      tableColumns, // 【テーブル】カラム一覧
-      tableOptions, // テーブルオプション
-      labelText, // 【テキストボックス】ラベル
-      placeholderText, // 【テキストボックス】ヒントテキスト
-      searchWord, // 【テキストボックス】検索文字列
-      searchedList, // 【テーブル】データ一覧
-      isLoadingDialogOpen, // 【ロードダイアログ】表示フラグ
-      progressColor, // 【ロードダイアログ】プログレスバーの色
-      isResultDialogOpen, // 【処理結果ダイアログ】表示フラグ
+      tableTitle,
+      tableColumns,
+      tableOptions,
+      labelText,
+      placeholderText,
+      searchWord,
+      searchedList,
+      isLoadingDialogOpen,
+      progressColor,
+      resultDialogTitle,
+      resultDialogMessage,
+      isResultDialogOpen,
     } = this.props;
     return (
       <div>
-        {/* アプリケーションヘッダー */}
         <AppHeader />
-        {/* 検索ボックス */}
         <TextBox
           labelText={labelText}
           placeholderText={placeholderText}
@@ -65,12 +74,14 @@ class SearchPageContainer extends Component {
           onKeyDownFunc={this.handleEnterSearchEdit}
           onChangeFunc={this.handleChangeSearchWord}
         />
-        {/* テーブル */}
         <DripTable title={tableTitle} columns={tableColumns} options={tableOptions} data={searchedList} />
-        {/* ロードダイアログ */}
-        <LoadingDialog isLoadingOpen={isLoadingDialogOpen} progressColor={progressColor} />
-        {/* 処理結果ダイアログ */}
-        <ResultDialog isResultDialogOpen={isResultDialogOpen} />
+        <LoadingDialog isLoadingDialogOpen={isLoadingDialogOpen} progressColor={progressColor} />
+        <ResultDialog
+          isResultDialogOpen={isResultDialogOpen}
+          resultDialogTitle={resultDialogTitle}
+          resultDialogMessage={resultDialogMessage}
+          onCloseDialog={this.handleOnClickOkBtn}
+        />
       </div>
     );
   }
@@ -86,6 +97,9 @@ SearchPageContainer.propTypes = {
   searchedList: PropTypes.array,
   isLoadingDialogOpen: PropTypes.bool.isRequired,
   progressColor: PropTypes.string.isRequired,
+  resultDialogTitle: PropTypes.string.isRequired,
+  resultDialogMessage: PropTypes.string.isRequired,
+  isResultDialogOpen: PropTypes.bool.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -99,6 +113,9 @@ function mapStateToProps(state) {
     searchedList,
     isLoadingDialogOpen,
     progressColor,
+    resultDialogTitle,
+    resultDialogMessage,
+    isResultDialogOpen,
   } = state.searchPageReducer;
   return {
     tableTitle,
@@ -110,6 +127,9 @@ function mapStateToProps(state) {
     searchedList,
     isLoadingDialogOpen,
     progressColor,
+    resultDialogTitle,
+    resultDialogMessage,
+    isResultDialogOpen,
   };
 }
 

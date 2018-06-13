@@ -26,7 +26,7 @@ export function searchData() {
   return (dispatch, getState) => {
     dispatch(requestProcess());
 
-    const company_code = getState().rootReducer.search.searchWord;
+    const company_code = getState().searchPageReducer.searchWord;
     return makeRequest('http://localhost/find', 'post', { company_code })
       .then(response => {
         if (response.status === 200) {
@@ -37,6 +37,7 @@ export function searchData() {
         } else {
           return dispatch({
             type: types.FAILED_SEARCH,
+            title: '検索失敗',
             message: '検索に失敗しました。',
           });
         }
@@ -44,7 +45,8 @@ export function searchData() {
       .catch(() => {
         return dispatch({
           type: types.FAILED_SEARCH,
-          message: '検索に失敗しました。',
+          title: '例外発生',
+          message: '例外が発生しました。',
         });
       });
   };
@@ -54,10 +56,9 @@ export function searchData() {
  * アラートメッセージ変更処理
  * @param {string} message アラートメッセージ
  */
-export function changeAlertMessage(message) {
+export function changeAlertMessage() {
   return {
     type: types.CHANGE_ALERT_MESSAGE,
-    message,
   };
 }
 

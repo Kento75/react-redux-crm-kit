@@ -11,7 +11,8 @@ import Hello from './Hello';
 /**
  * common export
  */
-export { AppHeader, TextBox, LoadingDialog, ResultDialog };
+export { AppHeader, TextBox };
+export { LoadingDialog, ResultDialog };
 
 /**
  * page export
