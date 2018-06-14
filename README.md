@@ -6,7 +6,7 @@ Reactを使用した業務管理システム開発のスターターキット
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4b39eb6aae96432b943f3cae44bc70a4)](https://www.codacy.com/app/Kento75/react-redux-crm-kit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kento75/react-redux-crm-kit&amp;utm_campaign=Badge_Grade)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-・Linux(Travis CI)、Windows(AppVeyor)対応
+
 
 ```sh
 # Linuxでビルド
