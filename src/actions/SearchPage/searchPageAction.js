@@ -32,7 +32,7 @@ export function searchData() {
         if (response.status === 200) {
           return dispatch({
             type: types.SUCCESS_SEARCH,
-            searchedList: response.data.result,
+            result: response.data.result,
           });
         } else {
           return dispatch({
