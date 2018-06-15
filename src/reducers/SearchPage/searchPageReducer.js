@@ -73,7 +73,7 @@ const searchPageReducer = (state = defaultState, action) => {
       return {
         ...state,
         isLoadingDialogOpen: false,
-        searchList: action.result,
+        searchedList: action.result,
       };
     // 検索以上終了時
     case types.FAILED_SEARCH:
