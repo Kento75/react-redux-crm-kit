@@ -2,16 +2,6 @@
   "name": "react-redux-crm-kit",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4",
-    "@material-ui/core": "^1.0.0",
-    "@material-ui/icons": "^1.0.0",
-    "material-ui": "^1.0.0-beta.47",
-    "mui-drip-table": "latest",
-    "prop-types": "^15.6.1"
-  },
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.dev.config",
     "start-windows": "set NODE_ENV=development&& webpack-dev-server --mode development --config webpack.dev.config",
@@ -25,6 +15,16 @@
   "pre-commit": [
     "lintThis"
   ],
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4",
+    "@material-ui/core": "^1.0.0",
+    "@material-ui/icons": "^1.0.0",
+    "material-ui": "^1.0.0-beta.47",
+    "mui-drip-table": "latest",
+    "prop-types": "^15.6.1"
+  },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.4",
     "@storybook/addon-links": "^3.4.4",
